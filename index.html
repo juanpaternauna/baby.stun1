@@ -1,147 +1,578 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Juan | Programador Web</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baby Rifas | Gran Rifa Exclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght=400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: white;
-      line-height: 1.6;
-    }
+        body {
+            background: #0d1117;
+            color: #ffffff;
+        }
 
-    header {
-      background-color: #1e88e5;
-      padding: 2rem;
-      text-align: center;
-    }
+        /* HEADER PREMIUM */
+        header {
+            background: linear-gradient(135deg, #1f2937, #111827);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid #ffaa00;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+        }
 
-    header h1 {
-      font-size: 2.8rem;
-      margin-bottom: 0.5rem;
-    }
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
 
-    header p {
-      font-size: 1.2rem;
-      color: #e0f7fa;
-    }
+        .logo span {
+            color: #ffaa00;
+            text-shadow: 0 0 10px rgba(255, 170, 0, 0.5);
+        }
 
-    .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 2rem;
-      background-color: #ffffff10;
-      border-radius: 12px;
-      backdrop-filter: blur(5px);
-    }
+        /* SECCIÓN DEL BANNER PRINCIPAL */
+        .main-banner {
+            max-width: 1200px;
+            margin: 40px auto;
+            background: radial-gradient(circle, #1a2333 0%, #0f141c 100%);
+            border: 4px solid #ffaa00;
+            border-radius: 24px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+        }
 
-    .section-title {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #1e88e5;
-      display: inline-block;
-    }
+        .banner-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-    .about {
-      margin-bottom: 2rem;
-    }
+        .banner-header h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ffaa00;
+            text-transform: uppercase;
+            line-height: 1.1;
+        }
 
-    .services {
-      margin-bottom: 2rem;
-    }
+        .banner-header h2 {
+            font-size: 2rem;
+            color: #ffffff;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
 
-    .services ul {
-      list-style: none;
-      padding-left: 0;
-    }
+        .info-sorteo {
+            background: rgba(255, 170, 0, 0.1);
+            border: 2px dashed #ffaa00;
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 50px;
+            margin-top: 15px;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
 
-    .services li {
-      background: #1e88e5;
-      margin-bottom: 0.8rem;
-      padding: 1rem;
-      border-radius: 8px;
-    }
+        /* CONTENEDOR DE JUEGO (IZQUIERDA / DERECHA) */
+        .game-container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
 
-    .contact {
-      text-align: center;
-      background-color: #1565c0;
-      padding: 2rem;
-      border-radius: 12px;
-    }
+        /* LADO IZQUIERDO: IMAGEN PRINCIPAL + SISTEMA DE PREMIOS MÓVIL */
+        .left-side {
+            flex: 1.2;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
 
-    .contact h3 {
-      margin-bottom: 1rem;
-    }
+        .main-prize-box {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 3px solid #ffaa00;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            background: #111827;
+        }
 
-    .contact p {
-      font-size: 1.1rem;
-    }
+        .main-prize-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease-in-out;
+        }
 
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
-      color: #ccc;
-      background-color: #0d47a1;
-    }
+        .prize-tag {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ffaa00;
+            color: #000000;
+            padding: 8px 20px;
+            font-weight: 900;
+            text-transform: uppercase;
+            border-radius: 8px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
+        /* Sistema de pestañas/carrusel inferior izquierdo */
+        .slider-nav-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-      .section-title {
-        font-size: 1.5rem;
-      }
+        .slider-nav-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #ffaa00;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
 
-      .contact p {
-        font-size: 1rem;
-      }
-    }
-  </style>
+        .thumbnail-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+        }
+
+        .thumb {
+            width: 80px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: contain;
+            background: rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+            border: 2px solid transparent;
+            opacity: 0.6;
+            transition: 0.3s;
+        }
+
+        .thumb.active, .thumb:hover {
+            border-color: #ffaa00;
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        /* LADO DERECHO: AFICHE, PRECIO, BOTÓN Y CARRITO */
+        .right-side {
+            flex: 0.8;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .rifa-poster-box {
+            width: 100%;
+            max-width: 360px;
+            border: 2px solid rgba(255, 170, 0, 0.3);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+            background: #111827;
+        }
+
+        .rifa-poster-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #ffaa00, #e69500);
+            color: #000000;
+            padding: 25px 40px;
+            border-radius: 20px;
+            width: 100%;
+            max-width: 360px;
+            box-shadow: 0 10px 25px rgba(255, 170, 0, 0.3);
+        }
+
+        .price-card h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            font-weight: 900;
+            letter-spacing: 1px;
+        }
+
+        .price-value {
+            font-size: 3rem;
+            font-weight: 900;
+            line-height: 1;
+            margin: 10px 0;
+        }
+
+        .price-card p {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .btn-buy {
+            display: block;
+            width: 100%;
+            max-width: 360px;
+            padding: 18px;
+            background: #00cc66;
+            color: white;
+            text-transform: uppercase;
+            font-weight: 900;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border-radius: 50px;
+            box-shadow: 0 5px 15px rgba(0, 204, 102, 0.4);
+            transition: 0.3s;
+            text-align: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-buy:hover {
+            background: #00ee77;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 204, 102, 0.6);
+        }
+
+        /* --- SECCIÓN DEL CARRITO DE COMPRAS --- */
+        .cart-box {
+            width: 100%;
+            max-width: 360px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 170, 0, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: left;
+        }
+
+        .cart-title {
+            font-size: 1.2rem;
+            color: #ffaa00;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 8px;
+        }
+
+        .cart-count {
+            background: #ffaa00;
+            color: #000;
+            font-size: 0.9rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 900;
+        }
+
+        .cart-empty {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .cart-items {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+
+        .item-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item-name {
+            font-weight: 700;
+        }
+
+        .item-price {
+            color: #ffaa00;
+            font-size: 0.85rem;
+        }
+
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-qty {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-qty:hover {
+            background: #ffaa00;
+            color: black;
+        }
+
+        .cart-total {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .btn-checkout {
+            display: block;
+            width: 100%;
+            background: #ffaa00;
+            color: black;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            margin-top: 15px;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+
+        .btn-checkout:hover {
+            background: #ffee55;
+            transform: scale(1.02);
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 900px) {
+            .game-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            .banner-header h1 {
+                font-size: 2.2rem;
+            }
+            .main-prize-box {
+                height: 300px;
+            }
+            .right-side, .cart-box {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <h1>Juan - Desarrollador Web</h1>
-    <p>Diseño páginas HTML básicas, limpias y efectivas</p>
-  </header>
+    <header>
+        <div class="logo">BABY <span>RIFAS</span>.COM</div>
+    </header>
 
-  <div class="container">
-    <section class="about">
-      <h2 class="section-title">👋 Sobre mí</h2>
-      <p>
-        ¡Hola! Soy <strong>Juan</strong>, un apasionado programador de HTML con experiencia en crear páginas web sencillas pero impactantes.
-        Me especializo en diseño limpio, estructura clara y compatibilidad móvil. Me gusta entregar soluciones funcionales y atractivas para todo tipo de usuarios.
-      </p>
-    </section>
+    <main class="main-banner">
+        <div class="banner-header">
+            <h1>Gran Rifa Exclusiva</h1>
+            <h2>Por la Lotería de Medellín</h2>
+            <div class="info-sorteo">
+                🗓️ SÁBADO, 12 DE SEPTIEMBRE DE 2026
+            </div>
+        </div>
 
-    <section class="services">
-      <h2 class="section-title">💡 Lo que ofrezco</h2>
-      <ul>
-        <li>✅ Páginas web personales</li>
-        <li>✅ Formularios de contacto</li>
-        <li>✅ Diseño adaptable a móviles</li>
-      </ul>
-    </section>
+        <div class="game-container">
+            
+            <div class="left-side">
+                <div class="main-prize-box">
+                    <span class="prize-tag" id="prizeLabel">Baby Stun</span>
+                    <img id="mainPrizeImg" src="https://cdn.discordapp.com/attachments/1514431735847321652/1515097384143556618/5b7c6563-89c5-437c-9b01-6d0ef7d61ca4.png?ex=6a2dc3e5&is=6a2c7265&hm=2198c60b1e2d34d25e95929d0623e81656f80bdfcf9e470b6443f44807d6d9e5&" alt="Premio Principal">
+                </div>
 
-    <section class="contact">
-      <h3>📬 ¿Quieres contactarme?</h3>
-      <p>Escríbeme a: <strong>juanpaternia7@gmail.com</strong></p>
-    </section>
-  </div>
+                <div class="slider-nav-box">
+                    <div class="slider-nav-title"> baby stun :</div>
+                    <div class="thumbnail-container">
+                        <img class="thumb active" src="https://cdn.discordapp.com/attachments/1514431735847321652/1515097384143556618/5b7c6563-89c5-437c-9b01-6d0ef7d61ca4.png?ex=6a2dc3e5&is=6a2c7265&hm=2198c60b1e2d34d25e95929d0623e81656f80bdfcf9e470b6443f44807d6d9e5&" alt="Baby Stun" onclick="changePrize(0, 'Baby Stun')">
+                        <img class="thumb" src="https://cdn.discordapp.com/attachments/1514431735847321652/1515097821269987398/10642748-ec3d-42ff-ae4b-58cf094e2178.png?ex=6a2dc44d&is=6a2c72cd&hm=9862a2d660bda894ed85a328c2865faa159f77e16ca6b0a7d3738f6b1da63163&" alt="Motos Premium" onclick="changePrize(1, 'Motos Premium')">
+                        <img class="thumb" src="https://cdn.discordapp.com/attachments/1514431735847321652/1515099500891471912/bcf1dfec-8b47-490f-a2b8-a98ea8e82861.png?ex=6a2dc5de&is=6a2c745e&hm=5fc9125edc0852be84f3dabe4337a0d247419376410bae298b8f08b4a0d7d2a9&" alt="Gran Rifa" onclick="changePrize(2, 'Gran Rifa')">
+                        <img class="thumb" src="https://cdn.discordapp.com/attachments/1514431735847321652/1515099692466442310/image.png?ex=6a2dc60b&is=6a2c748b&hm=d152013f92953a822e17a7a4e45239d3d5c323fc28789a6f0eedc8362fea0cee&" alt="Bono Extra" onclick="changePrize(3, 'Bono Extra')">
+                    </div>
+                </div>
+            </div>
 
-  <footer>
-    &copy; 2025 Juan | Programador Web
-  </footer>
+            <div class="right-side">
+                <div class="rifa-poster-box">
+                    <img src="https://cdn.discordapp.com/attachments/1514431735847321652/1515085917595893790/7457ad77-5883-4f71-8042-ef5ddbd24de7.png?ex=6a2db937&is=6a2c67b7&hm=82d87cd608e1f5a90a0de26a82aed99d05cf95a34a8fbfe9d2a0101fd13605d7&" alt="Afiche Oficial de la Rifa">
+                </div>
 
+                <div class="price-card">
+                    <h3>Solo por solo</h3>
+                    <div class="price-value">$10.000 COP</div>
+                    <p>O elige $15M en Efectivo</p>
+                </div>
+
+                <button class="btn-buy" onclick="addToCart()">¡Comprar Cupo!</button>
+
+                <div class="cart-box">
+                    <div class="cart-title">
+                        Tu Carrito 
+                        <span class="cart-count" id="cartCount">0</span>
+                    </div>
+                    <div class="cart-items" id="cartItems">
+                        <div class="cart-empty">Tu carrito está vacío</div>
+                    </div>
+                    <div class="cart-total">
+                        <span>Total:</span>
+                        <span id="cartTotal">$0 COP</span>
+                    </div>
+                    <a href="#" class="btn-checkout" id="btnCheckout" style="display: none;">Proceder al Pago</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script>
+        const premios = [
+            { img: "https://cdn.discordapp.com/attachments/1514431735847321652/1515097384143556618/5b7c6563-89c5-437c-9b01-6d0ef7d61ca4.png?ex=6a2dc3e5&is=6a2c7265&hm=2198c60b1e2d34d25e95929d0623e81656f80bdfcf9e470b6443f44807d6d9e5&", name: "Baby Stun" },
+            { img: "https://cdn.discordapp.com/attachments/1514431735847321652/1515097821269987398/10642748-ec3d-42ff-ae4b-58cf094e2178.png?ex=6a2dc44d&is=6a2c72cd&hm=9862a2d660bda894ed85a328c2865faa159f77e16ca6b0a7d3738f6b1da63163&", name: "Motos Premium" },
+            { img: "https://cdn.discordapp.com/attachments/1514431735847321652/1515099500891471912/bcf1dfec-8b47-490f-a2b8-a98ea8e82861.png?ex=6a2dc5de&is=6a2c745e&hm=5fc9125edc0852be84f3dabe4337a0d247419376410bae298b8f08b4a0d7d2a9&", name: "Gran Rifa" },
+            { img: "https://cdn.discordapp.com/attachments/1514431735847321652/1515099692466442310/image.png?ex=6a2dc60b&is=6a2c748b&hm=d152013f92953a822e17a7a4e45239d3d5c323fc28789a6f0eedc8362fea0cee&", name: "Bono Extra" }
+        ];
+
+        let currentIndex = 0;
+        const mainImg = document.getElementById("mainPrizeImg");
+        const prizeLabel = document.getElementById("prizeLabel");
+        const thumbs = document.querySelectorAll(".thumb");
+
+        // Estado del Carrito de Compras
+        let cart = [];
+        const ticketPrice = 10000;
+
+        function changePrize(index, name) {
+            currentIndex = index;
+            mainImg.src = premios[index].img;
+            prizeLabel.innerText = name;
+            
+            thumbs.forEach(thumb => thumb.classList.remove("active"));
+            if(thumbs[index]) {
+                thumbs[index].classList.add("active");
+            }
+        }
+
+        // Carrusel Automático de imágenes
+        setInterval(() => {
+            currentIndex++;
+            if (currentIndex >= premios.length) {
+                currentIndex = 0;
+            }
+            changePrize(currentIndex, premios[currentIndex].name);
+        }, 4000);
+
+        // LÓGICA DEL CARRITO
+        function addToCart() {
+            const currentPrizeName = premios[currentIndex].name;
+            
+            // Verificamos si la rifa ya está en el carrito
+            const existingItem = cart.find(item => item.name === currentPrizeName);
+
+            if (existingItem) {
+                existingItem.qty++;
+            } else {
+                cart.push({
+                    name: currentPrizeName,
+                    price: ticketPrice,
+                    qty: 1
+                });
+            }
+            updateCartUI();
+        }
+
+        function updateQuantity(index, change) {
+            cart[index].qty += change;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1); // Remover si llega a 0
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById("cartItems");
+            const cartCount = document.getElementById("cartCount");
+            const cartTotal = document.getElementById("cartTotal");
+            const btnCheckout = document.getElementById("btnCheckout");
+
+            // Limpiar contenedor
+            cartItemsContainer.innerHTML = "";
+
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<div class="cart-empty">Tu carrito está vacío</div>';
+                cartCount.innerText = "0";
+                cartTotal.innerText = "$0 COP";
+                btnCheckout.style.display = "none";
+                return;
+            }
+
+            let totalTickets = 0;
+            let totalPrice = 0;
+
+            cart.forEach((item, index) => {
+                totalTickets += item.qty;
+                totalPrice += item.price * item.qty;
+
+                const itemHTML = `
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-price">$${(item.price * item.qty).toLocaleString('es-CO')} COP</span>
+                        </div>
+                        <div class="item-controls">
+                            <button class="btn-qty" onclick="updateQuantity(${index}, -1)">-</button>
+                            <span>${item.qty}</span>
+                            <button class="btn-qty" onclick="updateQuantity(${index}, 1)">+</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.innerHTML += itemHTML;
+            });
+
+            // Actualizar totales de la interfaz
+            cartCount.innerText = totalTickets;
+            cartTotal.innerText = `$${totalPrice.toLocaleString('es-CO')} COP`;
+            btnCheckout.style.display = "block";
+        }
+    </script>
 </body>
 </html>
+
+```
